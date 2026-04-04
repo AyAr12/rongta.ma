@@ -8,24 +8,19 @@ import Sectors from "@/components/sections/Sectors";
 import Testimonials from "@/components/sections/Testimonials";
 import CtaBanner from "@/components/sections/CtaBanner";
 import Faq from "@/components/sections/Faq";
-import Footer from "@/components/sections/Footer";
 
 export default function Home() {
   return (
     <>
-      <Navbar />
-      <main>
-        <Hero />
-        <TrustBar />
-        <ProductCatalog />
-        <WhyRongta />
-        <FeaturedProduct />
-        <Sectors />
-        <Testimonials />
-        <CtaBanner />
-        <Faq />
-      </main>
-      <Footer />
+      <Hero />
+      <TrustBar />
+      <ProductCatalog />
+      <WhyRongta />
+      <FeaturedProduct />
+      <Sectors />
+      {/* <Testimonials /> */}
+      <CtaBanner />
+      <Faq />
     </>
   );
 }

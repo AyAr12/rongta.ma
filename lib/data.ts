@@ -18,6 +18,8 @@ import {
   ThumbsUp,
   Zap,
   type LucideIcon,
+  RefreshCcw,
+  Wrench,
 } from "lucide-react";
 import { type Variants } from "framer-motion";
 
@@ -39,138 +41,15 @@ export const navLinks: NavLink[] = [
 ];
 
 // ============================================================
-// PRODUCT CATEGORIES & PRODUCTS
+// WHATSAPP
 // ============================================================
-export type ProductCategory =
-  | "imprimantes"
-  | "balances"
-  | "terminaux"
-  | "accessoires";
+export const whatsappConfig = {
+  number: "212661251330",
+  message:
+    "Bonjour, je suis intéressé(e) par vos produits Rongta. Pouvez-vous me renseigner ?",
+};
 
-export interface ProductCategoryTab {
-  id: ProductCategory;
-  label: string;
-  icon: LucideIcon;
-}
-
-export const productCategories: ProductCategoryTab[] = [
-  { id: "imprimantes", label: "Imprimantes thermiques", icon: Printer },
-  { id: "balances", label: "Balances commerciales", icon: Scale },
-  { id: "terminaux", label: "Terminaux POS", icon: Monitor },
-  { id: "accessoires", label: "Accessoires", icon: Cable },
-];
-
-export interface Product {
-  id: string;
-  name: string;
-  category: ProductCategory;
-  image: string;
-  specs: string[];
-  badge?: string;
-  description: string;
-}
-
-export const products: Product[] = [
-  // — Imprimantes —
-  {
-    id: "rp820",
-    name: "RP820",
-    category: "imprimantes",
-    image: "/products/rp820.png",
-    specs: ["80mm", "250 mm/s", "USB + WiFi", "Auto-cutter"],
-    badge: "Best-seller",
-    description:
-      "Imprimante thermique haute vitesse pour tickets de caisse, adaptée à la restauration et au retail.",
-  },
-  {
-    id: "rp410",
-    name: "RP410",
-    category: "imprimantes",
-    image: "/products/rp410.png",
-    specs: ["110mm", "203 dpi", "USB + Ethernet", "Étiquettes"],
-    description:
-      "Imprimante d'étiquettes professionnelle pour la logistique et la gestion de stock.",
-  },
-  {
-    id: "rp58",
-    name: "RP58",
-    category: "imprimantes",
-    image: "/products/rp58.png",
-    specs: ["58mm", "90 mm/s", "USB + Bluetooth", "Compact"],
-    badge: "Compact",
-    description:
-      "Imprimante portable compacte pour les petits commerces et la vente ambulante.",
-  },
-  {
-    id: "rp326",
-    name: "RP326",
-    category: "imprimantes",
-    image: "/products/rp326.png",
-    specs: ["80mm", "326 mm/s", "USB + Série + LAN", "Auto-cutter"],
-    badge: "Ultra-rapide",
-    description:
-      "La plus rapide de sa catégorie. Idéale pour les environnements à fort volume de transactions.",
-  },
-  // — Balances —
-  {
-    id: "rls1000",
-    name: "RLS-1000",
-    category: "balances",
-    image: "/products/rls1000.png",
-    specs: ["30 kg", "Écran LCD", "Impression intégrée", "PLU 10 000"],
-    badge: "Populaire",
-    description:
-      "Balance étiqueteuse avec impression intégrée pour boucheries, fromageries et épiceries.",
-  },
-  {
-    id: "rls1100",
-    name: "RLS-1100",
-    category: "balances",
-    image: "/products/rls1100.png",
-    specs: ["15 kg", 'Tactile 10"', "WiFi", "Double écran"],
-    description:
-      "Balance tactile nouvelle génération avec double écran client/vendeur.",
-  },
-  // — Terminaux —
-  {
-    id: "rt500",
-    name: "RT-500",
-    category: "terminaux",
-    image: "/products/rt500.png",
-    specs: ['15.6" tactile', "Intel i3", "128 Go SSD", "Windows POS"],
-    badge: "Pro",
-    description:
-      "Terminal de caisse tout-en-un avec écran tactile HD pour la restauration et le retail.",
-  },
-  {
-    id: "rt300",
-    name: "RT-300",
-    category: "terminaux",
-    image: "/products/rt300.png",
-    specs: ['10.1" tactile', "Android 12", "WiFi + 4G", "Batterie"],
-    description:
-      "Terminal mobile Android pour la livraison et les points de vente éphémères.",
-  },
-  // — Accessoires —
-  {
-    id: "cd410",
-    name: "CD-410",
-    category: "accessoires",
-    image: "/products/cd410.png",
-    specs: ["Tiroir-caisse", "4 billets / 8 pièces", "RJ11", "Métal"],
-    description:
-      "Tiroir-caisse métallique résistant avec ouverture automatique.",
-  },
-  {
-    id: "scanner-bs6600",
-    name: "BS-6600",
-    category: "accessoires",
-    image: "/products/bs6600.png",
-    specs: ["Scanner 2D", "USB + Sans fil", "CMOS", "IP54"],
-    description:
-      "Scanner de codes-barres 2D sans fil pour une lecture rapide et précise.",
-  },
-];
+// ============================================================
 
 // ============================================================
 // FEATURED PRODUCT
@@ -185,18 +64,19 @@ export interface FeaturedProduct {
 }
 
 export const featuredProduct: FeaturedProduct = {
-  id: "rp820",
-  name: "RP820",
+  id: "rp335",
+  name: "RP335",
   tagline:
     "L'imprimante thermique la plus fiable du marché marocain. Adoptée par plus de 500 commerces.",
-  image: "/products/rp820-hero.png",
+  image: "/products/rp335-hero.png",
   features: [
     { label: "Vitesse", value: "250 mm/s" },
     { label: "Largeur", value: "80 mm" },
     { label: "Connectivité", value: "USB, WiFi, Bluetooth" },
     { label: "Découpe", value: "Auto-cutter intégré" },
     { label: "Durabilité", value: "150 km de papier" },
-    { label: "Garantie", value: "2 ans Maroc" },
+    { label: "Garantie", value: "Jusqu'à 4 ans (Extension)" },
+    { label: "SAV", value: "Imprimante de prêt incluse" },
   ],
   ctaLabel: "Demander un devis",
 };
@@ -213,27 +93,27 @@ export interface ValueProposition {
 export const valuePropositions: ValueProposition[] = [
   {
     icon: ShieldCheck,
-    title: "Garantie 2 ans",
+    title: "Garantie & Pièces 4 ans",
     description:
-      "Tous nos produits sont couverts par une garantie locale de 2 ans avec prise en charge directe au Maroc.",
+      "Garantie standard avec extension possible à 2 ou 3 ans. Nous garantissons la disponibilité des pièces de rechange pendant 4 ans.",
   },
   {
-    icon: Headphones,
-    title: "SAV réactif",
+    icon: Wrench,
+    title: "Centre SAV Dédié",
     description:
-      "Une équipe technique dédiée, joignable 6j/7, avec intervention sous 24h dans les grandes villes.",
+      "Un centre d'expertise exclusif RONGTA. En cas de panne, nous vous prêtons une imprimante de rechange le temps de la réparation.",
   },
   {
-    icon: Package,
-    title: "Stock permanent",
+    icon: RefreshCcw,
+    title: "Programme de Reprise",
     description:
-      "Un entrepôt à Casablanca avec stock permanent. Livraison 24-48h partout au Maroc.",
+      "Échangez votre ancienne imprimante (quelle que soit sa marque) contre une Rongta neuve à un prix imbattable.",
   },
   {
     icon: BadgeDollarSign,
-    title: "Prix distributeur",
+    title: "Distributeur Officiel",
     description:
-      "En tant que distributeur exclusif, nous proposons les meilleurs tarifs du marché avec des remises volume.",
+      "En tant que représentant officiel au Maroc, nous vous garantissons les meilleurs tarifs, un stock permanent et une expertise certifiée.",
   },
 ];
 
@@ -368,12 +248,22 @@ export const faqItems: FaqItem[] = [
   {
     question: "Êtes-vous le distributeur officiel de Rongta au Maroc ?",
     answer:
-      "Oui, rongta.ma est le distributeur exclusif et agréé de la marque Rongta pour l'ensemble du territoire marocain. Tous nos produits sont importés directement de l'usine avec certification d'origine.",
+      "Oui, rongta.ma est le distributeur officiel et agréé de la marque Rongta pour l'ensemble du territoire marocain. Tous nos produits sont importés directement de l'usine avec certification d'origine.",
   },
   {
-    question: "Quelle est la durée de la garantie ?",
+    question: "Comment fonctionne le programme d'échange (Reprise) ?",
     answer:
-      "Tous nos produits bénéficient d'une garantie de 2 ans couvrant les défauts de fabrication. La prise en charge se fait directement à notre atelier à Casablanca, sans besoin d'envoyer le matériel à l'étranger.",
+      "Nous reprenons votre ancienne imprimante, quelle que soit sa marque ou son état, et vous bénéficiez d'une remise exceptionnelle (prix imbattable) sur l'achat d'une imprimante Rongta neuve.",
+  },
+  {
+    question: "Quelle est la durée de la garantie et des pièces de rechange ?",
+    answer:
+      "Nous proposons une garantie standard avec la possibilité de souscrire à une extension de 2 ou 3 ans. De plus, en tant que distributeur officiel, nous garantissons la disponibilité des pièces de rechange pour une durée de 4 ans.",
+  },
+  {
+    question: "Que se passe-t-il si mon imprimante tombe en panne ?",
+    answer:
+      "Nous disposons d'un centre de service après-vente dédié exclusivement aux produits RONGTA. Pour ne pas bloquer votre activité, nous mettons à votre disposition une imprimante de rechange pendant toute la durée de la réparation.",
   },
   {
     question: "Quels sont les délais de livraison ?",
@@ -391,16 +281,6 @@ export const faqItems: FaqItem[] = [
     answer:
       "Les imprimantes Rongta sont compatibles avec tous les logiciels de caisse majeurs (ESC/POS standard) : Cegid, Odoo, Soft Restaurant, WinRest, et bien d'autres. Notre équipe technique peut vous assister pour l'installation.",
   },
-  {
-    question: "Comment fonctionne le SAV ?",
-    answer:
-      "Contactez-nous par téléphone ou WhatsApp. Pour les pannes simples, notre support résout le problème à distance. Pour les interventions physiques, un technicien se déplace sous 24h dans les grandes villes, ou nous prenons en charge l'envoi/retour du matériel.",
-  },
-  {
-    question: "Proposez-vous la formation à l'installation ?",
-    answer:
-      "Oui, chaque achat inclut une assistance à l'installation gratuite (en personne à Casablanca, ou à distance pour les autres villes). Nous fournissons également des guides d'installation détaillés.",
-  },
 ];
 
 // ============================================================
@@ -413,12 +293,11 @@ export interface Partner {
 
 export const partners: Partner[] = [
   { name: "Marjane", logo: "/partners/marjane.svg" },
-  { name: "Acima", logo: "/partners/acima.svg" },
-  { name: "Virgin Megastore", logo: "/partners/virgin.svg" },
+  { name: "BIM", logo: "/partners/bim.svg" },
+  { name: "Carrefour", logo: "/partners/carrefour.svg" },
   { name: "Paul", logo: "/partners/paul.svg" },
   { name: "Domino's Pizza", logo: "/partners/dominos.svg" },
-  { name: "Pharmacie Ibn Sina", logo: "/partners/ibnsina.svg" },
-  { name: "TransMaghreb", logo: "/partners/transmaghreb.svg" },
+  { name: "Electroplanet", logo: "/partners/electroplanet.svg" },
   { name: "Kitea", logo: "/partners/kitea.svg" },
 ];
 
@@ -442,7 +321,7 @@ export const ctaBanner = {
   subheadline:
     "Contactez-nous pour un devis gratuit et personnalisé. Livraison sous 24-48h partout au Maroc.",
   ctaLabel: "Obtenir mon devis gratuit",
-  phone: "+212 5 22 00 00 00",
+  phone: "+212 6 61 25 13 30",
 };
 
 // ============================================================
@@ -457,10 +336,22 @@ export const footerColumns: FooterColumn[] = [
   {
     title: "Produits",
     links: [
-      { label: "Imprimantes thermiques", href: "#" },
-      { label: "Balances commerciales", href: "#" },
-      { label: "Terminaux POS", href: "#" },
-      { label: "Accessoires", href: "#" },
+      {
+        label: "Imprimantes tickets",
+        href: "/products?category=receipt-printer",
+      },
+      {
+        label: "Imprimantes étiquettes",
+        href: "/products?category=label-printer",
+      },
+      {
+        label: "Imprimantes portables",
+        href: "/products?category=portable-printer",
+      },
+      {
+        label: "Modules & Accessoires",
+        href: "/products?category=panel-printer",
+      },
     ],
   },
   {
@@ -484,8 +375,8 @@ export const footerColumns: FooterColumn[] = [
 ];
 
 export const footerContact = {
-  phone: "+212 5 22 00 00 00",
-  whatsapp: "+212 6 00 00 00 00",
+  phone: "+212 6 61 25 13 30",
+  whatsapp: "+212 6 61 25 13 30",
   email: "contact@rongta.ma",
   address: "Bd Moulay Ismail, Casablanca, Maroc",
 };
@@ -493,10 +384,13 @@ export const footerContact = {
 // ============================================================
 // ANIMATION VARIANTS (Framer Motion)
 // ============================================================
-// Ajout de ': Variants' pour que TypeScript valide correctement la propriété 'ease'
 export const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 24 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: "easeOut" },
+  },
 };
 
 export const fadeIn: Variants = {

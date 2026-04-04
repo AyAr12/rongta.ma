@@ -93,7 +93,7 @@ export default function Hero() {
             >
               <div className="flex items-center gap-1.5">
                 <span className="inline-block h-2 w-2 rounded-full bg-green-500" />
-                Garantie 2 ans
+                Garantie 4 ans
               </div>
               <div className="flex items-center gap-1.5">
                 <span className="inline-block h-2 w-2 rounded-full bg-green-500" />
