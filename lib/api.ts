@@ -205,6 +205,25 @@ export async function getCategories(): Promise<{ data: ApiCategory[] }> {
   }
 }
 
+export async function submitResellerRequest(data: {
+  companyName: string;
+  phone: string;
+  email?: string;
+  notes?: string;
+}): Promise<{ success?: boolean; error?: string }> {
+  try {
+    const res = await fetch(`${ADMIN_URL}/api/public/reseller`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+
+    return await res.json();
+  } catch {
+    return { error: "Erreur de connexion. Réessayez plus tard." };
+  }
+}
+
 // ── Helpers ──────────────────────────────────────────────────
 
 export function getImageUrl(path: string): string {

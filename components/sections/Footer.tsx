@@ -1,6 +1,8 @@
 import Link from "next/link";
-import { Zap, Phone, Mail, MapPin } from "lucide-react";
+import Image from "next/image";
+import { Phone, Mail, MapPin } from "lucide-react";
 import { footerColumns, footerContact } from "@/lib/data";
+import ResellerDialog from "@/components/ResellerDialog";
 
 export default function Footer() {
   return (
@@ -11,8 +13,14 @@ export default function Footer() {
           {/* Brand column */}
           <div className="lg:col-span-2">
             <Link href="/" className="inline-flex items-center gap-2">
-              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary">
-                <Zap className="h-5 w-5 text-primary-foreground" />
+              <div className="flex h-9 w-9 items-center justify-center rounded-lg">
+                <Image
+                  src="/logo.png"
+                  alt="Rongta Logo"
+                  width={36}
+                  height={36}
+                  className="object-contain"
+                />
               </div>
               <span className="text-lg font-semibold tracking-tight text-background">
                 Rongta
@@ -54,16 +62,30 @@ export default function Footer() {
                 {col.title}
               </h4>
               <ul className="mt-4 flex flex-col gap-2.5">
-                {col.links.map((link) => (
-                  <li key={link.label}>
-                    <Link
-                      href={link.href}
-                      className="text-sm text-background/60 transition-colors hover:text-primary"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
+                {col.links.map((link) => {
+                  // Special case: "Devenir revendeur" opens the dialog
+                  if (link.label.toLowerCase().includes("revendeur")) {
+                    return (
+                      <li key={link.label}>
+                        <ResellerDialog>
+                          <button className="text-left text-sm text-background/60 transition-colors hover:text-primary">
+                            {link.label}
+                          </button>
+                        </ResellerDialog>
+                      </li>
+                    );
+                  }
+                  return (
+                    <li key={link.label}>
+                      <Link
+                        href={link.href}
+                        className="text-sm text-background/60 transition-colors hover:text-primary"
+                      >
+                        {link.label}
+                      </Link>
+                    </li>
+                  );
+                })}
               </ul>
             </div>
           ))}

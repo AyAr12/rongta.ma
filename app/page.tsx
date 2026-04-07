@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <TrustBar />
+      {/* <TrustBar /> */}
       <ProductCatalog />
       <WhyRongta />
       <FeaturedProduct />

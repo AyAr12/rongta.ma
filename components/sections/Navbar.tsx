@@ -2,11 +2,13 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Menu, X, Zap } from "lucide-react";
+import Image from "next/image";
+import { Menu, X, Handshake } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { navLinks } from "@/lib/data";
 import { motion, AnimatePresence } from "framer-motion";
-import Image from "next/image";
+import ResellerDialog from "@/components/ResellerDialog";
+import QuoteListButton from "@/components/QuoteListButton";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -18,7 +20,6 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Lock body scroll when mobile menu is open
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? "hidden" : "";
     return () => {
@@ -31,21 +32,19 @@ export default function Navbar() {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
           ? "bg-background/80 backdrop-blur-xl border-b border-border shadow-sm"
-          : "bg-transparent"
+          : "bg-background/60 backdrop-blur-md"
       }`}
     >
       <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 shrink-0">
-          {/* Conteneur de badge avec bg-transparent */}
           <div className="flex h-9 w-9 items-center justify-center rounded-lg">
-            {/* Remplacer Zap par une Image de badge */}
             <Image
-              src="/logo.png" // Chemin vers l'image du badge RT recréé
+              src="/logo.png"
               alt="Rongta Logo"
-              width={36} // h-9 w-9 est d'environ 36px
+              width={36}
               height={36}
-              className="object-contain" // Assurer que l'ovale s'adapte sans être coupé
+              className="object-contain"
             />
           </div>
           <span className="text-lg font-semibold tracking-tight text-foreground">
@@ -68,28 +67,37 @@ export default function Navbar() {
           ))}
         </ul>
 
-        {/* Desktop CTA */}
-        <div className="hidden lg:flex items-center gap-3">
-          <Button variant="outline" size="sm" asChild>
-            <Link href="tel:+212522000000">+212 5 22 00 00 00</Link>
-          </Button>
-          <Button size="sm" asChild>
-            <Link href="#contact">Demander un devis</Link>
-          </Button>
-        </div>
+        {/* Right cluster — Quote list + Reseller CTA */}
+        <div className="flex items-center gap-1 sm:gap-2">
+          {/* Quote list button — visible on all screens */}
+          <QuoteListButton />
 
-        {/* Mobile toggle */}
-        <button
-          onClick={() => setMobileOpen(!mobileOpen)}
-          className="inline-flex h-10 w-10 items-center justify-center rounded-md text-foreground lg:hidden hover:bg-accent transition-colors"
-          aria-label="Menu"
-        >
-          {mobileOpen ? (
-            <X className="h-5 w-5" />
-          ) : (
-            <Menu className="h-5 w-5" />
-          )}
-        </button>
+          {/* Desktop CTA — Devenir revendeur */}
+          <div className="hidden lg:block">
+            <ResellerDialog>
+              <Button
+                size="sm"
+                className="gap-1.5 bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm shadow-primary/20"
+              >
+                <Handshake className="h-4 w-4" />
+                Devenir revendeur
+              </Button>
+            </ResellerDialog>
+          </div>
+
+          {/* Mobile toggle */}
+          <button
+            onClick={() => setMobileOpen(!mobileOpen)}
+            className="inline-flex h-10 w-10 items-center justify-center rounded-md text-foreground lg:hidden hover:bg-accent transition-colors"
+            aria-label="Menu"
+          >
+            {mobileOpen ? (
+              <X className="h-5 w-5" />
+            ) : (
+              <Menu className="h-5 w-5" />
+            )}
+          </button>
+        </div>
       </nav>
 
       {/* Mobile menu */}
@@ -116,19 +124,13 @@ export default function Navbar() {
                   </li>
                 ))}
               </ul>
-              <div className="mt-4 flex flex-col gap-2 border-t border-border pt-4">
-                <Button
-                  variant="outline"
-                  className="w-full justify-center"
-                  asChild
-                >
-                  <Link href="tel:+212522000000">+212 5 22 00 00 00</Link>
-                </Button>
-                <Button className="w-full justify-center" asChild>
-                  <Link href="#contact" onClick={() => setMobileOpen(false)}>
-                    Demander un devis
-                  </Link>
-                </Button>
+              <div className="mt-4 border-t border-border pt-4">
+                <ResellerDialog>
+                  <Button className="w-full justify-center gap-1.5">
+                    <Handshake className="h-4 w-4" />
+                    Devenir revendeur
+                  </Button>
+                </ResellerDialog>
               </div>
             </div>
           </motion.div>

@@ -5,6 +5,7 @@ import { ArrowRight, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ctaBanner, fadeInUp, staggerContainer } from "@/lib/data";
 import { motion } from "framer-motion";
+import ResellerDialog from "../ResellerDialog";
 
 export default function CtaBanner() {
   return (
@@ -48,21 +49,20 @@ export default function CtaBanner() {
             variants={fadeInUp}
             className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row"
           >
-            <Button
-              size="lg"
-              variant="secondary"
-              className="gap-2 bg-white text-primary font-semibold hover:bg-white/90 shadow-lg shadow-black/10"
-              asChild
-            >
-              <Link href="#contact">
+            <ResellerDialog>
+              <Button
+                size="lg"
+                variant="secondary"
+                className="gap-2 bg-white text-primary font-semibold hover:bg-white/90 shadow-lg shadow-black/10"
+              >
                 {ctaBanner.ctaLabel}
                 <ArrowRight className="h-4 w-4" />
-              </Link>
-            </Button>
+              </Button>
+            </ResellerDialog>
             <Button
               size="lg"
               variant="outline"
-              className="gap-2 border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10"
+              className="gap-2 border-primary-foreground/30 hover:bg-primary-foreground/10"
               asChild
             >
               <Link href={`tel:${ctaBanner.phone.replace(/\s/g, "")}`}>
